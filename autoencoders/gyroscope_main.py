@@ -56,34 +56,9 @@ fit, NRMSE, logY, logYR = openLoopValidation(model,
         openLoopStartingPoint = Option.openLoopStartingPoint)
 end = time.time()
 
-with open("res/gyro_output_10.txt", "w+") as f:
-    for i in range(0, logY.size):
-        f.write(str(logY[i]) + "\n")
-
-with open("res/gyro_real_output_10.txt", "w+") as f:
-    for i in range(0, logY.size):
-        f.write(str(logYR[i]) + "\n")
-
 k = 1000
 plt.figure()
 plt.plot(logYR[1:k], label = 'y')
 plt.plot(logY[1:k], label = 'hy')
-plt.legend()
-plt.show()
-
-voM = False
-r = -1
-start = time.time()
-fit_tr, NRMSE_tr, logY_tr, logYR_tr = openLoopValidation(model,
-        validationOnMultiHarmonic = voM,
-        reset = r,
-        YTrue = Y_n.copy(),
-        U_Vn = U_n.copy(),
-        openLoopStartingPoint = Option.openLoopStartingPoint)
-end = time.time()
-
-plt.figure()
-plt.plot(logYR_tr, label = 'y')
-plt.plot(logY_tr - logYR_tr, label = 'y-hy')
 plt.legend()
 plt.show()

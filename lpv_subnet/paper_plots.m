@@ -1,34 +1,9 @@
 close all
 fsize = 18;
 
-%clear
-%cd('res')
-%gyro_output_5
-%gyro_real_output_5
-%cd('..')
-%
-%bfr = compute_bfr(y, yr);
-%fig3 = figure(3);
-%plot(y); hold on;
-%plot(y - yr)
-%title("BFR=" + bfr + "%", 'fontsize', fsize)
-%legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
-
-cd('res')
-gyro_output_10
-gyro_real_output_10
-cd('..')
-
-bfr = compute_bfr(y, yr);
-fig1 = figure(1);
-plot(y); hold on;
-plot(y - yr)
-title("BFR=" + bfr + "%", 'fontsize', fsize)
-legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
-
-cd('res')
-wh_output
-wh_real_output
+cd('results')
+wh_out
+wh_real_out
 cd('..')
 
 bfr = compute_bfr(y, yr);
@@ -38,13 +13,13 @@ plot(y - yr)
 title("BFR=" + bfr + "%", 'fontsize', fsize)
 legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
 
-cd('res')
-wh_output_10
-wh_real_output_10
+cd('results')
+gyro_out
+gyro_real_out
 cd('..')
 
 bfr = compute_bfr(y, yr);
-fig4 = figure(4);
+fig1 = figure(1);
 plot(y); hold on;
 plot(y - yr)
 title("BFR=" + bfr + "%", 'fontsize', fsize)

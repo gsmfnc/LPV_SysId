@@ -14,7 +14,7 @@ Option.stringDynamicalSystemSelector = str( \
     Option.dynamicalSystemSelector).replace('<function systemSelectorEnum.',
     '').split(' at ')[0]
 Option.nonLinearInputChar = False
-Option.stateSize = 5
+Option.stateSize = 6
 Option.n_a = 10
 Option.affineStruct = True
 Option.useGroupLasso = False;   
@@ -23,7 +23,7 @@ Option.regularizerWeight = 0.0001
 import warnings
 warnings.filterwarnings("ignore")
 
-#%% DS generation and model learning
+# DS generation and model learning
 simulatedSystem, U_n, Y_n, U_Vn, Y_Vn = Option.dynamicalSystemSelector()
 
 model = AdvAutoencoder(affineStruct = Option.affineStruct,
@@ -44,7 +44,7 @@ predictedLeft, stateLeft, oneStepAheadPredictionError, \
     forwardedPredictedError, forwardError = \
     model.model.predict([inputY, inputU])
 
-#%% Model Validation Validation
+# Model Validation
 voM = False
 r = -1
 start = time.time()
@@ -56,34 +56,8 @@ fit, NRMSE, logY, logYR = openLoopValidation(model,
         openLoopStartingPoint = Option.openLoopStartingPoint)
 end = time.time()
 
-with open("res/wh_output.txt", "w+") as f:
-    for i in range(0, logY.size):
-        f.write(str(logY[i]) + "\n")
-
-with open("res/wh_real_output.txt", "w+") as f:
-    for i in range(0, logY.size):
-        f.write(str(logYR[i]) + "\n")
-
 plt.figure()
 plt.plot(logYR, label = 'y')
 plt.plot(logY - logYR, label = 'y-hy')
-plt.legend()
-plt.show()
-
-#on training set
-voM = False
-r = -1
-start = time.time()
-fit_tr, NRMSE_tr, logY_tr, logYR_tr = openLoopValidation(model,
-        validationOnMultiHarmonic = voM,
-        reset = r,
-        YTrue = Y_n.copy(),
-        U_Vn = U_n.copy(),
-        openLoopStartingPoint = Option.openLoopStartingPoint)
-end = time.time()
-
-plt.figure()
-plt.plot(logYR_tr, label = 'y')
-plt.plot(logY_tr - logYR_tr, label = 'y-hy')
 plt.legend()
 plt.show()

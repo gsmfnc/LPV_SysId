@@ -61,20 +61,3 @@ plt.plot(logYR, label = 'y')
 plt.plot(logY - logYR, label = 'y-hy')
 plt.legend()
 plt.show()
-
-voM = False
-r = -1
-start = time.time()
-fit_tr, NRMSE_tr, logY_tr, logYR_tr = openLoopValidation(model,
-        validationOnMultiHarmonic = voM,
-        reset = r,
-        YTrue = Y_n.copy(),
-        U_Vn = U_n.copy(),
-        openLoopStartingPoint = Option.openLoopStartingPoint)
-end = time.time()
-
-plt.figure()
-plt.plot(logYR_tr, label = 'y')
-plt.plot(logY_tr - logYR_tr, label = 'y-hy')
-plt.legend()
-plt.show()

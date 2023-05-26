@@ -1,5 +1,5 @@
 function [data_LPV_training, data_LPV_test] = load_datasets()
-    load('WienerHammerBenchMark.mat')
+    load('dataset/WienerHammerBenchMark.mat')
 
     tmp_u = uBenchMark(5200:184000);
     tmp_y = yBenchMark(5200:184000);
