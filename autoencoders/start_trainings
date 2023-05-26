@@ -1,3 +1,0 @@
-python3 -W ignore main.py 1 6 7 0 5 10 1 0 | egrep "para|systemSelector|fit|NRMSE|f1|elapsed|evaluating|encoder|decoder|bridge" | tee -a  "results/gyroscope.txt"
-
-python3 -W ignore main.py 1 6 6 0 5 10 1 0 | egrep "para|systemSelector|fit|NRMSE|f1|elapsed|evaluating|encoder|decoder|bridge" | tee -a  "results/wh.txt"

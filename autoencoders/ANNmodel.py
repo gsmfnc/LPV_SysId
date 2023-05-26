@@ -15,7 +15,7 @@ from scipy import io
 
 from matplotlib import pyplot as plt
 
-from tensorflow import keras
+import keras
 
 from keras.layers import Input, Dense
 from keras.models import Model
@@ -378,7 +378,7 @@ class AdvAutoencoder:
                   {'multiStep_decodeError':outputVector[:,0:5]*0,'oneStepDecoderError':outputVector[:,0:5]*0,
                    'forwardError':outputVector[:,0:5]*0
                    },                                     
-                  epochs=1,#150,
+                  epochs=150,
                   verbose=1,
                   validation_split=self.validation_split, shuffle=shuffled,
                   batch_size=self.batch_size,

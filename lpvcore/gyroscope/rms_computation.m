@@ -1,10 +1,10 @@
-function [rms_est, rms_val] = rms_computation(est, val, model, plot_)
+function [rms_est, rms_test] = rms_computation(est, test, model, plot_)
 
     rms_est = rms(compare(est, model, Inf) - est.OutputData);
-    rms_val = rms(compare(val, model, Inf) - val.OutputData);
+    rms_test = rms(compare(test, model, Inf) - test.OutputData);
 
     if plot_
         figure(); compare(est, model, Inf);
-        figure(); compare(val, model, Inf);
+        figure(); compare(test, model, Inf);
     end
 end

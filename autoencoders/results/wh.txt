@@ -1,6 +1,0 @@
-para ['main.py', '1', '2', '6', '0', '5', '10', '1', '0']
-fit:  0.9865182815458896
-NRMSE:  0.9980959232517382
-elapsed time in simulation: 3789.466572999954
-validationOnMultiHarmonic: False reset every: 1 fit:  0.9865182815458896  NRMSE:  0.9980959232517382
-{'nonLinearInputChar': False, 'dynamicalSystemSelector': <function systemSelectorEnum.wienerHammersteindataset at 0x7fd3d7ff73a0>, 'stringDynamicalSystemSelector': 'wienerHammersteindataset', 'affineStruct': True, 'openLoopStartingPoint': 15, 'horizon': 5, 'TRsteps': 1, 'fitHorizon': 2, 'n_a': 10, 'useGroupLasso': False, 'stateReduction': True, 'regularizerWeight': 0.0001, 'closedLoopSim': False, 'enablePlot': False, 'stateSize': 5}

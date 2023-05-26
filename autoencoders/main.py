@@ -92,7 +92,6 @@ class Options():
 Option=Options()
 #%% Parameter parsing
 print('para',sys.argv)
-print(sys.argv[0], sys.argv[1])
 if len(sys.argv)>2:    
     Option.fitHorizon=int(sys.argv[2])
     print(int(sys.argv[2]))
@@ -183,6 +182,7 @@ model.setDataset(U_n.copy(),Y_n.copy(),U_Vn.copy(),Y_Vn.copy())
 inputU,inputY=model.prepareDataset()
 model.trainModel()
 predictedLeft,stateLeft,oneStepAheadPredictionError,forwardedPredictedError,forwardError=model.model.predict([inputY,inputU])
+
 
 #%% Functions definition
 def prepareMatrices(uSequence,x0):
@@ -337,9 +337,9 @@ def openLoopValidation(validationOnMultiHarmonic=True, reset=-1,YTrue=None,U_Vn=
 
 #%% Model Validation Validation
 validationOnMultiHarmonic=[True,False]
-validationOnMultiHarmonic=[False]
 reset=[1,10,-1]
-reset=[1]
+validationOnMultiHarmonic=[False]
+reset=[-1]
 for r in reset:
     for voM in validationOnMultiHarmonic:        
         start = time.time()

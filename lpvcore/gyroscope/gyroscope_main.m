@@ -31,7 +31,7 @@ if training_
 else
     load gyroscope_arx_model
 end
-[rms_est, rms_val] = rms_computation(data_train, data_test, arx_model, plot_)
+[rms_est, rms_test] = rms_computation(data_train, data_test, arx_model, plot_)
 
 %% LPV-OE estimation
 template_oe = lpvidpoly([], arx_model.B, [], [], arx_model.A, 0, Ts, ...
@@ -49,7 +49,7 @@ if training_
 else
     load gyroscope_oe_model
 end
-[rms_est, rms_val] = rms_computation(data_train, data_test, oe_model, plot_)
+[rms_est, rms_test] = rms_computation(data_train, data_test, oe_model, plot_)
 
 %% LPV-SS estimation
 %template_ss = lpvio2ss(oe_model.F, oe_model.B, na, nb, 1, {q1d, s2, c2});
@@ -57,4 +57,4 @@ end
 %options_pem_ss.Display = 'off';
 %options_pem_ss.Initialization = 'template';
 %ss_model = lpvssest(data_train, template_ss, options_pem_ss);
-%[rms_est, rms_val] = rms_computation(data_train, data_test, ss_model, plot_)
+%[rms_est, rms_test] = rms_computation(data_train, data_test, ss_model, plot_)
