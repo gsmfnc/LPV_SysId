@@ -16,3 +16,5 @@ Python 3.8.10 with tensorflow 2.9.1 and Python 3.6.9 with tensorflow 2.6.21
 
 1.  The code in the 'lpv_subnet/' folder is based on
 https://gitlab.com/releases-c-verhoek/lpv-subnet
+1.  The code in 'autoencoders/' is based on
+http://dysco.imtlucca.it/masti/autoencoders/

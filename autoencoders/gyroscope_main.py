@@ -7,7 +7,7 @@ from ANNmodel import AdvAutoencoder
 from functions import *
 
 Option = Options()
-Option.fitHorizon = 11
+Option.fitHorizon = 16
 Option.dynamicalSystemSelector = systemSelectorEnum.gyroscopedataset
 Option.closedLoopSim = False
 Option.stringDynamicalSystemSelector = str( \
