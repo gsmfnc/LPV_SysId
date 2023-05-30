@@ -15,7 +15,7 @@ Option.stringDynamicalSystemSelector = str( \
     '').split(' at ')[0]
 Option.nonLinearInputChar = False
 Option.stateSize = 6
-Option.n_a = 20
+Option.n_a = 10
 Option.affineStruct = True
 Option.useGroupLasso = False;   
 Option.regularizerWeight = 0.0001

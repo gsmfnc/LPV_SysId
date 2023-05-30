@@ -29,14 +29,14 @@ class systemSelectorEnum(Enum):
         y_n=np.reshape(Yvero.T[0],(numel,1))
         u_Vn=np.reshape(UV.T[0],(numelV,1))
         y_Vn=np.reshape(YV.T[0],(numelV,1))        
-        meanY=np.mean(y_n)
-        meanU=np.mean(u_n)
-        stdY=np.std(y_n)
-        stdU=np.std(u_n)
-        y_n=(y_n-meanY)/stdY;#+np.random.normal(0,0.05,(sizeT,1))
-        y_Vn=(y_Vn-meanY)/stdY;#+np.random.normal(0,0.05,(sizeV,1))
-        u_n=(u_n-meanU)/stdU;#+np.random.normal(0,0.05,(sizeT,1))
-        u_Vn=(u_Vn-meanU)/stdU;#+np.random.normal(0,0.05,(sizeV,1))        
+        #meanY=np.mean(y_n)
+        #meanU=np.mean(u_n)
+        #stdY=np.std(y_n)
+        #stdU=np.std(u_n)
+        #y_n=(y_n-meanY)/stdY;#+np.random.normal(0,0.05,(sizeT,1))
+        #y_Vn=(y_Vn-meanY)/stdY;#+np.random.normal(0,0.05,(sizeV,1))
+        #u_n=(u_n-meanU)/stdU;#+np.random.normal(0,0.05,(sizeT,1))
+        #u_Vn=(u_Vn-meanU)/stdU;#+np.random.normal(0,0.05,(sizeV,1))
         return dynamicModel,u_n,y_n,u_Vn,y_Vn
     def wienerHammersteindataset():
         return systemSelectorEnum.loadFromDataset('datasets/wh.mat');
