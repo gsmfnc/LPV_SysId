@@ -6,11 +6,13 @@ Codes associated with ...
 
 1.  LPVcore toolbox for MATLAB
 1.  deepSI Python toolbox (https://github.com/GerbenBeintema/deepSI)
-1.  The python scripts in the folder 'autoencoders/' were executed using
+1.  The python scripts in 'autoencoders/' were executed using
 Python 3.6.9 with keras 2.3.1 and tensorflow 1.14.0
-1.  The python scripts in the folder 'lpv_subnet/' were executed using both
+1.  The python scripts in 'lpv_subnet/' were executed using both
 Python 3.8.10 with tensorflow 2.9.1 and Python 3.6.9 with tensorflow 2.6.21
-1.  All the matlab scripts were executed on MATLAB R2021a Update 3.
+1.  MATLAB version: 9.10 (R2021a)
+1.  The MATLAB scripts in 'BLA/' were executed using the System Identification
+Toolbox version: 9.14 (R2021a)
 
 ## Notes
 
