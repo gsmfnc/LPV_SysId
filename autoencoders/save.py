@@ -1,5 +1,5 @@
-name1 = "res/wh_output_10.m"
-name2 = "res/wh_real_output_10.m"
+name1 = "res/gyro_output.m"
+name2 = "res/gyro_real_output.m"
 
 with open(name1, "w+") as f:
     f.write("y = [" + str(logY[0]) + ",\n")

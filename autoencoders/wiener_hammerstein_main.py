@@ -47,14 +47,12 @@ predictedLeft, stateLeft, oneStepAheadPredictionError, \
 # Model Validation
 voM = False
 r = -1
-start = time.time()
 fit, NRMSE, logY, logYR = openLoopValidation(model,
         validationOnMultiHarmonic = voM,
         reset = r,
         YTrue = Y_Vn.copy(),
         U_Vn = U_Vn.copy(),
         openLoopStartingPoint = Option.openLoopStartingPoint)
-end = time.time()
 
 plt.figure()
 plt.plot(logYR, label = 'y')

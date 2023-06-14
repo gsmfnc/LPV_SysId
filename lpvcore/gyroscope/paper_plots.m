@@ -1,6 +1,7 @@
 close all
-fig = figure(1)
 fsize = 18;
+
+fig = figure(1)
 subplot(421);
 plot(data_train.InputData); title('Training set', 'fontsize', fsize)
 ylabel('$i_2$ (A)', 'interpreter', 'latex', 'fontsize', fsize)
@@ -28,7 +29,23 @@ plot(data_test.OutputData);
 fig2 = figure(2)
 [model_output, fit] = compare(data_test, oe_model, Inf);
 plot(data_test.OutputData); hold on
-plot(model_output - data_test.OutputData);
+plot(data_test.OutputData - model_output);
+legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
+bfr = compute_bfr(model_output, data_test.OutputData);
+title("BFR=" + bfr + "%", 'interpreter', 'latex', 'fontsize', fsize)
+
+fig3 = figure(3)
+[model_output, fit] = compare(data_test, arx_model, Inf);
+plot(data_test.OutputData); hold on
+plot(data_test.OutputData - model_output);
+legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
+bfr = compute_bfr(model_output, data_test.OutputData);
+title("BFR=" + bfr + "%", 'interpreter', 'latex', 'fontsize', fsize)
+
+fig4 = figure(4)
+[model_output, fit] = compare(data_test, ss_model, Inf);
+plot(data_test.OutputData); hold on
+plot(data_test.OutputData - model_output);
 legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
 bfr = compute_bfr(model_output, data_test.OutputData);
 title("BFR=" + bfr + "%", 'interpreter', 'latex', 'fontsize', fsize)

@@ -9,7 +9,7 @@ cd('..')
 bfr = compute_bfr(y, yr);
 fig1 = figure(1);
 plot(yr); hold on;
-plot(y - yr)
+plot(yr - y)
 title("BFR=" + bfr + "%", 'fontsize', fsize)
 legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
 
@@ -21,7 +21,7 @@ cd('..')
 bfr = compute_bfr(y, yr);
 fig2 = figure(2);
 plot(yr); hold on;
-plot(y - yr)
+plot(yr - y)
 title("BFR=" + bfr + "%", 'fontsize', fsize)
 legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
 
@@ -33,7 +33,7 @@ cd('..')
 bfr = compute_bfr(y, yr);
 fig3 = figure(3);
 plot(yr); hold on;
-plot(y - yr)
+plot(yr - y)
 title("BFR=" + bfr + "%", 'fontsize', fsize)
 legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
 

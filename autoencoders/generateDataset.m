@@ -34,3 +34,12 @@ load Schroeder80mV
 U_val=V1(10585:10585+1023)';
 Y_val=V2(10585:10585+1023)';
 save('Silverbox.mat','U','Y','U_val','Y_val')
+
+clear
+load("datasets/ML_estim.mat")
+Y = exp_y;
+U = [exp_u exp_p(:, 1)];
+load("datasets/ML_valid.mat")
+Y_val = exp_y;
+U_val = [exp_u exp_p(:, 1)];
+save('gyroscope.mat', 'U', 'Y', 'U_val', 'Y_val')

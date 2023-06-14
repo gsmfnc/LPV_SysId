@@ -1,11 +1,11 @@
 function [training_data, test_data, Ts] = load_dataset()
     load("gyroscope_data/ML_estim.mat")
-    train_out = y_q4d;
-    train_in = u_i2;
+    train_out = exp_y;
+    train_in = exp_u;
 
     load("gyroscope_data/ML_valid.mat");
-    test_out = y_q4d;
-    test_in = u_i2;
+    test_out = exp_y;
+    test_in = exp_u;
 
     mm = mean(train_out);
     train_out = train_out - mm;

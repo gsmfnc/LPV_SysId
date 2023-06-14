@@ -7,7 +7,7 @@ from ANNmodel import AdvAutoencoder
 from functions import *
 
 Option = Options()
-Option.fitHorizon = 16
+Option.fitHorizon = 11
 Option.dynamicalSystemSelector = systemSelectorEnum.gyroscopedataset
 Option.closedLoopSim = False
 Option.stringDynamicalSystemSelector = str( \
@@ -47,14 +47,12 @@ predictedLeft, stateLeft, oneStepAheadPredictionError, \
 #%% Model Validation Validation
 voM = False
 r = -1
-start = time.time()
 fit, NRMSE, logY, logYR = openLoopValidation(model,
         validationOnMultiHarmonic = voM,
         reset = r,
         YTrue = Y_Vn.copy(),
         U_Vn = U_Vn.copy(),
         openLoopStartingPoint = Option.openLoopStartingPoint)
-end = time.time()
 
 k = 1000
 plt.figure()
