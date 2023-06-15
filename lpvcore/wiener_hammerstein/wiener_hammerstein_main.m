@@ -3,7 +3,7 @@ clear
 close all
 
 value_for_ZeroIsNonFree = false;
-plot_ = false;
+plot_ = true;
 training_ = false;
 
 [data_train, data_test] = load_datasets();

@@ -54,6 +54,14 @@ fit, NRMSE, logY, logYR = openLoopValidation(model,
         U_Vn = U_Vn.copy(),
         openLoopStartingPoint = Option.openLoopStartingPoint)
 
+r = 10
+fit, NRMSE, logY, logYR = openLoopValidation(model,
+        validationOnMultiHarmonic = voM,
+        reset = r,
+        YTrue = Y_Vn.copy(),
+        U_Vn = U_Vn.copy(),
+        openLoopStartingPoint = Option.openLoopStartingPoint)
+
 k = 1000
 plt.figure()
 plt.plot(logYR[1:k], label = 'y')
