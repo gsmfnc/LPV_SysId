@@ -1,6 +1,10 @@
 close all
 fsize = 18;
 
+set(groot, 'defaulttextinterpreter','latex');  
+set(groot, 'defaultAxesTickLabelInterpreter','latex');  
+set(groot, 'defaultLegendInterpreter','latex');
+
 cd('results')
 wh_out
 wh_real_out
@@ -10,7 +14,7 @@ bfr = compute_bfr(y, yr);
 fig2 = figure(2);
 plot(yr); hold on;
 plot(y - yr)
-title("BFR=" + bfr + "%", 'fontsize', fsize)
+xlabel('$k$', 'interpreter', 'latex', 'fontsize', fsize)
 legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
 
 cd('results')
@@ -22,7 +26,7 @@ bfr = compute_bfr(y, yr);
 fig1 = figure(1);
 plot(yr); hold on;
 plot(y - yr)
-title("BFR=" + bfr + "%", 'fontsize', fsize)
+xlabel('$k$', 'interpreter', 'latex', 'fontsize', fsize)
 legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
 
 function bfr = compute_bfr(y, yr)

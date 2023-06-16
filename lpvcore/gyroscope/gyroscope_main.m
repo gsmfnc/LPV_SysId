@@ -2,12 +2,11 @@ clc
 clear
 close all
 
-value_for_ZeroIsNonFree = false;
+value_for_zeroisnonfree = false;
 plot_ = true;
 training_ = false;
-training_ = true;
 
-[data_train, data_test, Ts] = load_dataset();
+[data_train, data_test, ts] = load_dataset();
 plot_data(plot_, data_train, data_test)
 
 na = 5;
