@@ -2,22 +2,22 @@ clc
 clear
 close all
 
-value_for_zeroisnonfree = false;
-plot_ = true;
+value_for_ZeroIsNonFree = false;
+plot_ = false;
 training_ = false;
 
-[data_train, data_test, ts] = load_dataset();
+[data_train, data_test, Ts] = load_dataset();
 plot_data(plot_, data_train, data_test)
 
-na = 5;
-nb = 5;
+%% LPV-ARX estimation
+s2 = preal('sin(q2)', 'dt');
 c2 = preal('cos(q2)', 'dt');
 q1d = preal('q1d', 'dt');
-s2 = preal('sin(q2)', 'dt');
 
-%% LPV-ARX estimation
-A = randn(1) + randn(1) * c2 + randn(1) * q1d + randn(1) * s2;
-B = randn(1) + randn(1) * c2 + randn(1) * q1d + randn(1) * s2;
+A = randn(1) + randn(1) * q1d + randn(1) * s2 + randn(1) * c2;
+B = randn(1) + randn(1) * q1d + randn(1) * s2 + randn(1) * c2;
+na = 5;
+nb = 5;
 [A_poly, B_poly] = shift_pol(A, na, B, nb);
 
 template_arx = lpvidpoly(A_poly, B_poly, [], [], [], 0, Ts, ...
@@ -36,8 +36,8 @@ end
 %% LPV-OE estimation
 template_oe = lpvidpoly([], arx_model.B, [], [], arx_model.A, 0, Ts, ...
     'ZeroIsNonFree', value_for_ZeroIsNonFree);
-template_oe = lpvidpoly([], B_poly, [], [], A_poly, 0, Ts, ...
-    'ZeroIsNonFree', value_for_ZeroIsNonFree);
+%template_oe = lpvidpoly([], B_poly, [], [], A_poly, 0, Ts, ...
+%    'ZeroIsNonFree',value_for_ZeroIsNonFree);
 template_oe.InputName = {'Current Gimbal 2'};
 template_oe.InputUnit = {'A'};
 template_oe.OutputName = {'q4d'};
@@ -53,17 +53,15 @@ else
 end
 [rms_est, rms_test] = rms_computation(data_train, data_test, oe_model, plot_)
 
-%% LPV-PEM-SS estimation
-template_ss = lpvio2ss(oe_model.F, oe_model.B, na, nb, 1, {c2, q1d, s2});
-template_ss = lpvio2ss(arx_model.A, arx_model.B, na, nb, 1, {c2, q1d, s2});
+%% LPV-SS estimation
+template_ss = lpvio2ss(oe_model.F, oe_model.B, na, nb, Ts, {q1d, s2, c2});
 template_ss.Ts = Ts;
 options_pem_ss = lpvssestOptions;
 options_pem_ss.Display = 'off';
 options_pem_ss.Initialization = 'template';
-%options_pem_ss.SearchOptions.maxIter = 3;
 if training_
     ss_model = lpvssest(data_train, template_ss, options_pem_ss);
 else
-    load gyroscope_ss_model_2
+    load gyroscope_ss_model
 end
 [rms_est, rms_test] = rms_computation(data_train, data_test, ss_model, plot_)
