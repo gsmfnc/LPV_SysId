@@ -41,7 +41,7 @@ template_oe.InputUnit = {'A'};
 template_oe.OutputName = {'q4d'};
 template_oe.OutputUnit = {'rad/s'};
 options_oe = lpvoeOptions('Display', 'off', ...
-    'SearchOptions',  struct('StepSize', 1, 'StepTolerance', 1E-10), ...
+    'SearchOptions',  struct('StepSize', 10, 'StepTolerance', 1E-10), ...
     'Regularization', struct('Lambda', 1),...
     'Initialization', 'template');
 if training_
@@ -52,9 +52,7 @@ end
 [rms_est, rms_test] = rms_computation(data_train, data_test, oe_model, plot_)
 
 %% LPV-PEM-SS estimation
-template_ss = lpvio2ss(oe_model.F, oe_model.B, na, nb, 1, {c2, q1d, s2});
-template_ss = lpvio2ss(arx_model.A, arx_model.B, na, nb, 1, {c2, q1d, s2});
-template_ss.Ts = Ts;
+template_ss = lpvio2ss(arx_model.A, arx_model.B, na, nb, Ts, {c2, q1d, s2});
 options_pem_ss = lpvssestOptions;
 options_pem_ss.Display = 'off';
 options_pem_ss.Initialization = 'template';

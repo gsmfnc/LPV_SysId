@@ -1,8 +1,24 @@
 close all
 fsize = 18;
 
+fig1 = figure(1)
+[model_output, fit] = compare(data_test, arx_model, Inf);
+plot(data_test.OutputData); hold on
+plot(model_output - data_test.OutputData);
+legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
+bfr = compute_bfr(model_output, data_test.OutputData);
+title("BFR=" + bfr + "%", 'interpreter', 'latex', 'fontsize', fsize)
+
 fig2 = figure(2)
 [model_output, fit] = compare(data_test, oe_model, Inf);
+plot(data_test.OutputData); hold on
+plot(model_output - data_test.OutputData);
+legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
+bfr = compute_bfr(model_output, data_test.OutputData);
+title("BFR=" + bfr + "%", 'interpreter', 'latex', 'fontsize', fsize)
+
+fig3 = figure(3)
+[model_output, fit] = compare(data_test, ss_model, Inf);
 plot(data_test.OutputData); hold on
 plot(model_output - data_test.OutputData);
 legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)

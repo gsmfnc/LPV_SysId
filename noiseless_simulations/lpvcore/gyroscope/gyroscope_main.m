@@ -3,7 +3,7 @@ clear
 close all
 
 value_for_ZeroIsNonFree = false;
-plot_ = false;
+plot_ = true;
 training_ = false;
 
 [data_train, data_test, Ts] = load_dataset();
@@ -55,7 +55,6 @@ end
 
 %% LPV-SS estimation
 template_ss = lpvio2ss(oe_model.F, oe_model.B, na, nb, Ts, {q1d, s2, c2});
-template_ss.Ts = Ts;
 options_pem_ss = lpvssestOptions;
 options_pem_ss.Display = 'off';
 options_pem_ss.Initialization = 'template';

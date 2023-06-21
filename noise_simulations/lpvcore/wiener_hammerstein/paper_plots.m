@@ -39,6 +39,26 @@ set(p2, 'position', [.55 .5 .4 .45])
 set(p3, 'position', [.1 .05 .4 .45])
 set(p4, 'position', [.55 .05 .4 .45])
 
+fi3 = figure(3)
+fsize = 18;
+tsize = 12;
+[model_output, fit] = compare(data_test, arx_model, Inf);
+plot(data_test.OutputData); hold on
+plot(model_output - data_test.OutputData);
+legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
+bfr = compute_bfr(model_output, data_test.OutputData);
+title("BFR=" + bfr + "%", 'interpreter', 'latex', 'fontsize', fsize)
+
+fig4 = figure(4)
+fsize = 18;
+tsize = 12;
+[model_output, fit] = compare(data_test, ss_model, Inf);
+plot(data_test.OutputData); hold on
+plot(model_output - data_test.OutputData);
+legend('$y$', '$y-\hat y$', 'interpreter', 'latex', 'fontsize', fsize)
+bfr = compute_bfr(model_output, data_test.OutputData);
+title("BFR=" + bfr + "%", 'interpreter', 'latex', 'fontsize', fsize)
+
 function bfr = compute_bfr(y, yr)
 num = 0;
 den = 0;
