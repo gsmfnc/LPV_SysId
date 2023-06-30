@@ -51,7 +51,7 @@ else
 end
 [rms_est, rms_test] = rms_computation(data_train, data_test, oe_model, plot_)
 
-%% LPV-PEM-SS estimation
+%% LPV-PEM-SS estimation K=0
 template_ss = lpvio2ss(arx_model.A, arx_model.B, na, nb, Ts, {c2, q1d, s2});
 options_pem_ss = lpvssestOptions;
 options_pem_ss.Display = 'off';

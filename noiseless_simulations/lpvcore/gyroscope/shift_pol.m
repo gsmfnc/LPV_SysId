@@ -1,4 +1,4 @@
-function [A_poly, B_poly] = shift_pol(A, na, B, nb);
+function [A_poly, B_poly] = shift_pol(A, na, B, nb, B0);
     A_poly = eye(1);
     for k = 1:na
         if k == 1
@@ -7,7 +7,7 @@ function [A_poly, B_poly] = shift_pol(A, na, B, nb);
             A_poly = {A_poly{:, 1:k}, pshift(A, -k)};
         end
     end
-    B_poly = rand(1);
+    B_poly = B0;
     for k = 1:nb
         if k == 1
             B_poly = {B_poly, pshift(B, -k)};
