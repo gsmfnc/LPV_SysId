@@ -37,9 +37,9 @@ save('Silverbox.mat','U','Y','U_val','Y_val')
 
 clear
 load("datasets/ML_estim.mat")
-Y = exp_y;
-U = [exp_u exp_p(:, 1)];
+Y = y_q4d;
+U = [u_i2 qd_all(:, 1)];
 load("datasets/ML_valid.mat")
-Y_val = exp_y;
-U_val = [exp_u exp_p(:, 1)];
+Y_val = y_q4d;
+U_val = [u_i2 qd_all(:, 1)];
 save('gyroscope.mat', 'U', 'Y', 'U_val', 'Y_val')
